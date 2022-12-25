@@ -1,0 +1,26 @@
+# Version of buildspect.yml
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      nodejs: 12
+    commands:
+      # use Node Package Manager to install Angular CLI
+      - npm install -g @angular/cli@9.0.6
+  pre_build:
+    commands:
+      # install dependencies
+      - npm install
+  build:
+    commands:
+      # build the app
+      - ng build --prod
+artifacts:
+  # The ng build command we defined will place all build artifacts under a specific folder.
+  # Therefore, we need to tell CodeBuild to get all files and folders from that folder.
+  base-directory: dist/my-angular-project
+  # we need to define which files will be included from this
+  # folder using the files attribute. Files takes values as list.
+  files:
+    # we need to use quotes to escape the asterisks because asterisk is a special character in YAML.
+    - '**/*'

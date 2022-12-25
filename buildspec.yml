@@ -3,7 +3,7 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      nodejs: 12
+      nodejs: 16
     commands:
       # use Node Package Manager to install Angular CLI
       - npm install -g @angular/cli@9.0.6
